@@ -75,14 +75,23 @@ void test_subtract_underflow(void) {
   TEST_ASSERT_TRUE(result > 0); // Checks if underflow occurred
 }
 
-void test_multiply_positive_numbers(void) {
-  TEST_ASSERT_EQUAL(25, multiply(5, 5));
-  TEST_ASSERT_EQUAL(15, multiply(5, 3));
-  TEST_ASSERT_EQUAL(5, multiply(5, 1));
-  TEST_ASSERT_EQUAL(1, multiply(1, 1));
-  TEST_ASSERT_EQUAL(0, multiply(5, 0));
-  TEST_ASSERT_EQUAL(0, multiply(0, 0));
-  TEST_ASSERT_EQUAL(0, multiply(1, 0));
+void test_multiply(void) {
+  // positive numbers
+  TEST_ASSERT_EQUAL(25, multiply(5, 5)); // 5 * 5 = 25
+  TEST_ASSERT_EQUAL(15, multiply(5, 3)); // 5 * 3 = 15
+
+  // negative numbers
+  TEST_ASSERT_EQUAL(-5, multiply(5, -1)); // 5 * -1 = -5
+  TEST_ASSERT_EQUAL(-1, multiply(1, -1)); // 1 * -1 = -1
+
+  // by one
+  TEST_ASSERT_EQUAL(5, multiply(5, 1)); // 5 * 1 = 5
+  TEST_ASSERT_EQUAL(1, multiply(1, 1)); // 1 * 1 = 5
+
+  // by zero
+  TEST_ASSERT_EQUAL(0, multiply(5, 0)); // 5 * 0 = 0
+  TEST_ASSERT_EQUAL(0, multiply(0, 0)); // 0 * 0 = 0
+  TEST_ASSERT_EQUAL(0, multiply(1, 0)); // 1 * 0 = 0
 }
 
 int main(void) {
@@ -105,6 +114,6 @@ int main(void) {
   RUN_TEST(test_subtract_underflow);
 
   // *
-  RUN_TEST(test_multiply_positive_numbers);
+  RUN_TEST(test_multiply);
   return UNITY_END();
 }
