@@ -86,6 +86,15 @@ void test_multiply(void) {
   TEST_ASSERT_EQUAL(0, multiply(5, 0)); // 5 * 0 = 0
   TEST_ASSERT_EQUAL(0, multiply(0, 0)); // 0 * 0 = 0
   TEST_ASSERT_EQUAL(0, multiply(1, 0)); // 1 * 0 = 0
+
+  // overflow
+  int result =
+      multiply(INT_MAX, 2); // Should wrap around or cause undefined behavior
+  TEST_ASSERT_TRUE(result < 0); // Checks if overflow occurred
+
+  // underflow
+  int result2 = multiply(INT_MIN, 2);
+  TEST_ASSERT_TRUE(result2 == 0); // Checks if underflow occurred
 }
 
 void test_divide(void) {
