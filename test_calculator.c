@@ -110,8 +110,8 @@ void test_divide(void) {
   TEST_ASSERT_EQUAL(0, divide(0, 100)); // 0 / 100 = 0
 
   // zero as the divisor
-  // int result = divide(4, 0);
-  // TEST_ASSERT_TRUE(result < 0);
+  int result = divide(4, 0);
+  TEST_ASSERT_TRUE(result == -1);
 }
 
 int main(void) {
