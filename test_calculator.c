@@ -75,6 +75,16 @@ void test_subtract_underflow(void) {
   TEST_ASSERT_TRUE(result > 0); // Checks if underflow occurred
 }
 
+void test_multiply_positive_numbers(void) {
+  TEST_ASSERT_EQUAL(25, multiply(5, 5));
+  TEST_ASSERT_EQUAL(15, multiply(5, 3));
+  TEST_ASSERT_EQUAL(5, multiply(5, 1));
+  TEST_ASSERT_EQUAL(1, multiply(1, 1));
+  TEST_ASSERT_EQUAL(0, multiply(5, 0));
+  TEST_ASSERT_EQUAL(0, multiply(0, 0));
+  TEST_ASSERT_EQUAL(0, multiply(1, 0));
+}
+
 int main(void) {
   UNITY_BEGIN();
 
@@ -94,5 +104,7 @@ int main(void) {
   RUN_TEST(test_subtract_overflow);
   RUN_TEST(test_subtract_underflow);
 
+  // *
+  RUN_TEST(test_multiply_positive_numbers);
   return UNITY_END();
 }
