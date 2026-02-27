@@ -94,6 +94,23 @@ void test_multiply(void) {
   TEST_ASSERT_EQUAL(0, multiply(1, 0)); // 1 * 0 = 0
 }
 
+void test_divide(void) {
+  TEST_ASSERT_EQUAL(2, divide(4, 2));  // 4 / 2 = 2
+  TEST_ASSERT_EQUAL(3, divide(18, 6)); // 18 / 6 = 3
+
+  // by numbers' selves
+  TEST_ASSERT_EQUAL(1, divide(2, 2)); // 2 / 2 = 1
+  TEST_ASSERT_EQUAL(1, divide(1, 1)); // 1 / 1 = 1
+
+  // zero as the dividend
+  TEST_ASSERT_EQUAL(0, divide(0, 2));   // 0 / 2 = 0
+  TEST_ASSERT_EQUAL(0, divide(0, 100)); // 0 / 100 = 0
+
+  // zero as the divisor
+  int result = divide(4, 0);
+  TEST_ASSERT_TRUE(result < 0);
+}
+
 int main(void) {
   UNITY_BEGIN();
 
@@ -115,5 +132,8 @@ int main(void) {
 
   // *
   RUN_TEST(test_multiply);
+
+  // /
+  RUN_TEST(test_divide);
   return UNITY_END();
 }
