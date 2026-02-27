@@ -17,6 +17,7 @@ void tearDown(void) {
   // For this particular codebase, we don't need anything
 }
 
+// addition tests
 void test_add_positive_numbers(void) {
   TEST_ASSERT_EQUAL(5, add(2, 3)); // We expect 2 + 3 = 5
 }
@@ -44,13 +45,23 @@ void test_add_underflow(void) {
   int result = add(INT_MIN, -1);
   TEST_ASSERT_TRUE(result > 0); // Checks if underflow occurred
 }
+// subtraction tests
+void test_add_subtract(void) {
+  TEST_ASSERT_EQUAL(3, subtract(6, 3)); // We expect 6 - 3 = 2
+}
+
 int main(void) {
   UNITY_BEGIN();
+
+  // +
   RUN_TEST(test_add_positive_numbers);
   RUN_TEST(test_add_positive_and_negative_numbers);
   RUN_TEST(test_add_negative_numbers);
   RUN_TEST(test_add_zero);
   RUN_TEST(test_add_overflow);
   RUN_TEST(test_add_underflow);
+
+  // -
+  RUN_TEST(test_add_subtract);
   return UNITY_END();
 }
